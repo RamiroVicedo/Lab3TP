@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title> Encuesta D&D </title>
+	
+	<style>
+
+	body {
+		background: #633f4d;
+	}
+
+	h1{
+		text-align: center;
+		text-align: justify-all;
+		color: white;
+		text-shadow: -2px 2px black;
+		font-style: italic;
+	}
+
+	h3 {
+		text-align: center;
+		text-align: justify-all;
+		color: white;
+		text-shadow: -2px 2px black;
+		font-style: italic;
+	}
+
+	h4 {
+		display: none;
+		text-align: center;
+		text-align: justify-all;
+		color: white;
+		text-shadow: -2px 2px black;
+		font-style: italic;
+	}
+
+	p {
+		text-align: center;
+		text-align: justify-all;
+		margin-left: auto;
+  		margin-right: auto;
+		width: 37%
+	}
+
+	.intro{
+		color: white;
+	}
+
+	.pregunta{
+		border: 1px solid #c4cebc;
+		padding: 5px;
+		background: #4758d6;
+		color: white;
+		border-radius: 4px;
+	}
+
+	.respuesta{
+		display: none;
+		color: white;
+	}
+
+	.final{
+		display: none;
+		border: 1px solid #c4cebc;
+		padding: 5px;
+		background: #4758d6;
+		color: white;
+		border-radius: 4px;
+	}
+
+	table td{
+		text-align: center;
+		border: 1px solid grey;
+		padding: 5px;
+		background: white;
+		color: #2c2932;
+	}
+
+	table td:hover{
+		background: lightblue;
+	}
+
+	.tablar{
+		margin-left: auto;
+  		margin-right: auto;
+  		width: 15%;
+	}
+
+	img{
+  		border-radius: 30px;
+  		display: none;
+  		margin-left: auto;
+  		margin-right: auto;
+  		width: auto;
+	}
+
+	.img{
+  		display: none;
+	}
+
+	.listar{
+		display: block;
+		width: auto;
+		margin-left: auto;
+  		margin-right: auto;
+	}
+
+	input{
+		display: block;
+		width: auto;
+		margin-left: auto;
+  		margin-right: auto;
+	}
+
+</style>
+
+</head>
+
+
+<body>
+
+	<script>
+		"use strict"
+
+		var puntos = 0;
+
+		var preguntas = 0;
+
+	</script>
+
+
+	<h1> Encuesta Calabozos y Dragones </h1>
+
+	<p class="intro"> 
+		Bienvenido aventurero, llego la hora de probar tus conocimientos sobre el legendario juego de rol. <br/>
+		Estas preparado?
+	</p>
+
+	<br/>
+
+
+	<h3> PREGUNTA 1</h3>
+
+	<p class="pregunta" id="p1">
+	Los dados son la principal forma de interactuar con los distintos aspectos del juego, ya sean combate, pruebas de habilidad, etc. 
+	Que dado es el más usado en el juego? 
+	</p>
+
+	<select class="listar" id="lados">
+		<option>4 lados</option>
+		<option>6 lados</option>
+		<option>8 lados</option>
+		<option>10 lados</option>
+		<option>12 lados</option>
+		<option>20 lados</option>
+
+	</select>
+
+	<input type="button" id="ejecutar1" value="Aceptar" />
+
+	<br/>
+
+	<p class="respuesta" id="resp1c">
+		Correcto! El d20 es el dado favorito y mas odiado de los jugadores de D&D.
+	</p>
+
+	<p class="respuesta" id="resp1i">
+		Incorrecto. El dado usado mas frequentemente es el de 20 lados.
+	</p>
+	
+	<img id="dados" src= "setdados.jpg" alt="foto dados" height="300" />
+
+
+	<script>
+
+		var pregunta1 = 0;
+
+		document.getElementById("ejecutar1").onclick = function (){
+
+			var respuesta1 = document.getElementById("lados").value;
+
+			var dado = "20 lados";
+
+			if (pregunta1 == 0){
+
+				if (respuesta1 == dado){
+					puntos++;
+					document.getElementById("p1").style.background = "green";
+					document.getElementById("resp1c").style.display = "block";
+				}
+
+				else{
+					document.getElementById("p1").style.background = "red";
+					document.getElementById("resp1i").style.display = "block";
+				}
+
+				dado = 0;
+				pregunta1 = 1;
+				preguntas++;
+				document.getElementById("dados").style.display = "block";
+				final(preguntas);
+			}
+		}
+
+	</script>
+
+	<br/>
+
+
+	<h3> PREGUNTA 2</h3>
+
+	<p class="pregunta" id="p2">
+		En Avernus reside Tiamat, la reina de los dragones cromáticos. Ella tiene cinco cabezas, cada una de un color distinto. Cuales son los cinco colores? 
+	</p>
+
+	
+	<table class="tablar" id="tabla2">
+		<tr> <td id="rojo" onClick=seleccionar()>Rojo</td> <td id="amarillo">Amarillo</td> <td id="verde">Verde</td> </tr>
+		<tr> <td id="azul">Azul</td> <td id="negro">Negro</td> <td id="blanco">Blanco</td> </tr>
+		<tr> <td id="naranja">Naranja</td> <td id="celeste">Celeste</td> <td id="gris">Gris</td> </tr>
+	</table>
+	<input type="button" id="ejecutar2" value="Aceptar" />
+
+	<p class="respuesta" id="resp2c">
+		Correcto! Cada cabeza le permite disparar un aliento distinto, como fuego y acido.
+	</p>
+
+	<p class="respuesta" id="resp2i">
+		Incorrecto. Los colores de las cabezas de Tiamat son Rojo, Blanco, Azul, Negro y Verde.
+	</p>
+	
+	
+	<img src= "tiamat.jpg" alt="foto tiamat" height="300" id="tiamat" />
+	
+
+
+	<script>
+		var colores = 0;
+		var celda2 = "";
+		var pregunta2 = 0;
+		var correctos2 = 0;
+		var respuesta2 = 5;
+		var tabla2 = document.getElementById("tabla2");
+		var id;
+
+		function multiseleccion (celda2){
+			if (pregunta2 == 0){
+				if(celda2.style.background != "lightblue" && colores < 5){
+					celda2.style.background = "lightblue";
+					celda2.style.border = "1px solid black";
+					id = celda2.id;
+					switch (id){
+						case "rojo":
+							correctos2++;
+						break;
+
+						case "verde":
+							correctos2++;
+						break;
+
+						case "blanco":
+							correctos2++;
+						break;
+
+						case "negro":
+							correctos2++;
+						break;
+
+						case "azul":
+							correctos2++;
+						break;
+
+						default:
+							correctos2 = correctos2;
+						break;
+
+					}
+					colores++;
+				}
+				else if (celda2.style.background != "lightblue" && colores == 5){
+					celda2.style.background = "";
+					celda2.style.border = "";
+				}
+				else{
+					celda2.style.background = "";
+					celda2.style.border = "";
+					id = celda2.id;
+					switch (id){
+						case "rojo":
+							correctos2--;
+						break;
+
+						case "verde":
+							correctos2--;
+						break;
+
+						case "blanco":
+							correctos2--;
+						break;
+
+						case "negro":
+							correctos2--;
+						break;
+
+						case "azul":
+							correctos2--;
+						break;
+
+						default:
+							correctos2 = correctos2;
+						break;
+
+					}
+					colores--;
+				}
+
+			}
+		}
+
+		for (var i=0; i<tabla2.rows.length; i++){
+			for (var j = 0; j < tabla2.rows[i].cells.length; j++) {
+				tabla2.rows[i].cells[j].onclick = function(){multiseleccion(this);};
+			}
+		}
+		
+		document.getElementById("ejecutar2").onclick  = function(){
+			if(pregunta2 == 0 && colores == 5){
+				if (correctos2 == respuesta2){
+					document.getElementById("resp2c").style.display = "block";
+					document.getElementById("p2").style.background = "green";
+					puntos++;
+				}
+				else{
+					document.getElementById("p2").style.background = "red";
+					document.getElementById("resp2i").style.display = "block";
+				}
+
+				document.getElementById("tiamat").style.display = "block";
+				pregunta2 = 1;
+				preguntas++;
+				final(preguntas);
+			}
+		}
+
+
+	</script>
+
+
+ 	<br/>
+
+
+	<h3> PREGUNTA 3</h3>
+
+	<p class="pregunta" id="p3"> 
+		Múltiples razas existen en los Reinos Olvidados. Estas suelen ser categorizadas por tamaño, pudiendo ser medianas o pequeñas. Qué tamaño tiene la raza kenku? 
+	</p>
+
+
+	<input type="text" id="tamaño" placeholder="pequeño o mediano?" />
+	<input type="button" id="ejecutar3" value="Aceptar" />
+
+
+	<p class="respuesta" id="resp3c">
+		Correcto! Los kenku parecen cuervos antropomorficos, dandoles un tamaño menor.
+	</p>
+
+	<p class="respuesta" id="resp3i">
+		Incorrecto. El tamaño de un kenku es pequeño.
+	</p>
+
+	
+	<img src="kenku.png" alt="foto kenku" height="300"  id="kenku" />
+	
+
+	<script>
+		
+		var pregunta3 = 0;
+		var tamaño = "pequeño";
+
+		document.getElementById("ejecutar3").onclick = function(){
+
+			respuesta3 = document.getElementById("tamaño").value;
+
+			if (pregunta3 == 0 && respuesta3 != ""){
+
+				if (respuesta3 == tamaño){
+					puntos++;
+					document.getElementById("resp3c").style.display = "block";
+					document.getElementById("p3").style.background = "green";
+				}
+
+				else{
+					document.getElementById("resp3i").style.display = "block";
+					document.getElementById("p3").style.background = "red";
+
+				}
+
+				tamaño = 0;
+				pregunta3 = 1;
+				preguntas++;
+				document.getElementById("kenku").style.display = "block";
+				final(preguntas);
+			}
+
+		}
+
+
+	</script>
+
+	<br/>
+	
+
+	<h3> PREGUNTA 4</h3>
+
+	<p class="pregunta" id="p4">
+		Los planos exteriores están atados a alineamientos en la guerra entre la ley y el caos, y entre el bien y el mal. Baator está alineado a la ley y el mal, Arbórea al caos y al bien. A que está alineado Mechanus?
+	</p>
+
+	
+	<table class="tablar" id="tabla4">
+		<tr> <td>Ley y Bien</td> <td>Neutralidad y Bien</td> <td>Caos y Bien</td> </tr>
+		<tr> <td id="bien">Ley y Neutralidad</td> <td>Neutralidad Total</td> <td>Caos y Neutralidad</td> </tr>
+		<tr> <td>Ley y Mal</td> <td>Neutralidad y Mal</td> <td>Caos y Mal</td> </tr>
+	</table>
+	<input type="button" id="ejecutar4" value="Aceptar" />
+
+	<p class="respuesta" id="resp4c">
+		Correcto! Mechanus es un plano de estructura normativa, en el que se ignoran los conceptos de bien y mal.
+	</p>
+
+	<p class="respuesta" id="resp4i">
+		Incorrecto. El alineamiento del plano Mechanus es Ley y Neutralidad.
+	</p>
+
+	<img src="mechanus.jpg" id="mechanus" height="300" alt="foto mechanus">
+
+
+	<script>
+		var opcion = 0;
+		var celda = "";
+		var pregunta4 = 0;
+		var correctos4 = 0;
+		var respuesta4 = 1;
+		var tabla4 = document.getElementById("tabla4");
+		var id;
+
+		function seleccionar (celda){
+			if (pregunta4 == 0){
+				if(celda.style.background != "lightblue" && opcion < 1){
+					celda.style.background = "lightblue";
+					celda.style.border = "1px solid black";
+					id = celda.id;
+					switch (id){
+						case "bien":
+							correctos4++;
+						break;
+
+						default:
+							correctos4 = correctos4;
+						break;
+
+					}
+					opcion++;
+				}
+				else if (celda.style.background != "lightblue" && opcion == 1){
+					celda.style.background = "";
+					celda.style.border = "";
+				}
+				else{
+					celda.style.background = "";
+					celda.style.border = "";
+					id = celda.id;
+					switch (id){
+						case "bien":
+							correctos4--;
+						break;
+
+						default:
+							correctos4 = correctos4;
+						break;
+
+					}
+					opcion--;
+				}
+
+			}
+		}
+
+		for (var i=0; i<tabla4.rows.length; i++){
+			for (var j = 0; j < tabla4.rows[i].cells.length; j++) {
+				tabla4.rows[i].cells[j].onclick = function(){seleccionar(this);};
+			}
+		}
+		
+		document.getElementById("ejecutar4").onclick  = function(){
+			if(pregunta4 == 0 && opcion){
+				if (correctos4 == respuesta4){
+					document.getElementById("resp4c").style.display = "block";
+					document.getElementById("p4").style.background = "green";
+					puntos++;
+				}
+				else{
+					document.getElementById("p4").style.background = "red";
+					document.getElementById("resp4i").style.display = "block";
+				}
+				document.getElementById("mechanus").style.display = "block";
+				pregunta4 = 1;
+				preguntas++;
+				final(preguntas);
+			}
+		}
+
+
+	</script>
+
+	<br/>
+	
+
+	<h3> PREGUNTA 5</h3>
+
+	<p class="pregunta" id="p5">
+		La puntuación de desafío indica que tan poderoso es una criatura en combate. Un simple gato tiene una puntuación de 0, mientras que un dragón blanco antiguo tiene 20. Qué puntuación tiene un vampiro común? 
+	</p>
+
+	<select class="listar" id="cr">
+		<option>10</option> <option>11</option> <option>12</option> <option>13</option>
+		<option>14</option> <option>15</option> <option>16</option> <option>17</option> 
+		<option>18</option> <option>19</option> <option>20</option> <option>21</option> 
+		<option>22</option> <option>23</option> <option>24</option> <option>25</option> 
+
+	</select>
+	
+	<input type="button" id="ejecutar5" value="Aceptar" />
+
+	<p class="respuesta" id="resp5c">
+		Correcto! Los vampiros son criaturas poderosas, pero hay otras aun mas temibles.
+	</p>
+
+	<p class="respuesta" id="resp5i">
+		Incorrecto. La puntuacion de desafio de un vampiro es 13.
+	</p>
+
+	<img src="vampiro.png" alt="foto vampiro" height="300" id="vampiro">
+
+	<script>
+		
+		var pregunta5 = 0;
+		var desafio = 13;
+
+			document.getElementById("ejecutar5").onclick = function (){
+
+				if (pregunta5 == 0){
+
+					var respuesta5 = document.getElementById("cr").value;
+
+					if (respuesta5 == desafio){
+						puntos++;
+						document.getElementById("p5").style.background = "green";
+						document.getElementById("resp5c").style.display = "block";
+					}
+
+					else{
+						document.getElementById("p5").style.background = "red";
+						document.getElementById("resp5i").style.display = "block";
+					}
+					document.getElementById("vampiro").style.display = "block";
+					desafio = 0;
+					pregunta5 = 1;
+					preguntas++;
+					final(preguntas);
+				}
+			}
+
+	</script>
+
+	<br/>
+
+	<h4 id="fin">PUNTUACION FINAL</h4>
+
+	<p class="final" id="0pto">
+		0: Siempre es un buen momento para empezar a jugar.
+	</p>
+
+	<p class="final" id="1pto">
+		1: Parece que hay que repasar un poco antes de volver al juego.
+	</p>
+
+	<p class="final" id="2pto">
+		2: Vamos empezando a conocer al juego, el camino apenas empieza.
+	</p>
+
+	<p class="final" id="3pto">
+		3: Nada mal. Sabes mas que el jugador promedio, pero aun te espera algo mas grande.
+	</p>
+
+	<p class="final" id="4pto">
+		4: Casi perfecto. Tenes experiencia, pero siempre se puede ir por mas.
+	</p>
+
+	<p class="final" id="5pto">
+		5: Todo un experto! Conoces el juego como pocos.
+	</p>
+
+	<script>
+		
+		function final (preguntas){
+			if (preguntas == 5){
+
+				document.getElementById("fin").style.display = "block";
+
+				switch(puntos){
+
+					case 0:
+						document.getElementById("0pto").style.display = "block";
+						break;
+
+					case 1:
+						document.getElementById("1pto").style.display = "block";
+						break;
+
+					case 2:
+						document.getElementById("2pto").style.display = "block";
+						break;
+
+					case 3:
+						document.getElementById("3pto").style.display = "block";
+						break;
+
+					case 4:
+						document.getElementById("4pto").style.display = "block";
+						break;
+
+					case 5:
+						document.getElementById("5pto").style.display = "block";
+						break;
+
+					default:
+						document.getElementById("0pto").style.display = "block";
+						break;
+
+				}
+
+			}
+		}
+	</script>
+
+</body>
+
+</html>
